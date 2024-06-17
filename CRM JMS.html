@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tarefas</title>
+</head>
+
+<body>
+    <div id="cabecalhobt">
+
+        <button id="bt-tarefas" style="font-family: cursive" >Tarefas</button>
+        <button id="bt-carteira"  style="font-family: cursive">Carteira</button>
+
+
+    </div>
+    
+    <div id="corpo-tarefas" >
+    <div id="container">
+        <div  id="bt-tela-tarefas"> 
+                   
+
+            
+
+        </div>
+    </div>
+
+    <div id="menu">
+        <!-- <button id="opcoes">Opções</button> -->
+        <button id="opcoes">Opções</button>
+        <input placeholder="Digite uma nova tarefa" id="origem" type="text" style="font-family: cursive">
+
+        <!-- <div id="modalOverlay" class="modal-overlay"> -->
+            <div id="opcoesDiv" class="modal-content">
+                
+                <button id="mudarCorColunas">Cor das Colunas</button>
+                <button id="mudarCorFundo">Cor de Fundo</button>
+                <button id="fecharOpcoes" >&times;</button>
+                <input type="color" id="seletorCor" style="display:none;">
+            </div>
+        <!-- </div> -->
+        
+
+
+
+    </div>
+
+    <div class="kanban">     
+
+        <div class="column" id="colnormal">
+        
+            <span class="column-title" style="font-family: cursive">Tarefas</span>
+       
+        </div>
+        
+       
+        <div class="column" id="colfinalizado">
+            <div class="column-header"> <!-- Novo div para agrupar título e botão -->
+                <span class="column-title" style="font-family: cursive"   >Finalizado</span>
+                <button id="limparFinalizados">Limpar</button>
+            </div>
+        </div>    
+        
+    </div>
+</div>
+
+                        <!-- // Gestão DE CARTEIRA -->
+
+    <div id="corpo-gestao-carteira">                 
+
+    <div class="grid-container">
+        <p id="titulo" style="font-family: cursive;">Gestão de Carteira</p>
+        <button id="bt-cadastro">Cadastrar</button>
+        <button id="bt-deletar">Deletar</button>
+        <button id="bt-salvar">Salvar</button>
+        <button id="bt-importar">Importar</button>
+        <button id="deletartudo">Deletar Tudo</button>
+
+        <div class="modal-inicial">
+            <div id="nenhum" class="droppable">
+                <div class="alinha-imp">
+                    <div style="font-family: cursive ; font-size: 25px;"" >Nenhum</div>
+                </div>
+            </div>
+            <div id="mca" class="droppable">
+                <div class="alinha-imp">
+                    <div style="font-family: cursive ; font-size: 25px;"" >Mca</div>
+                </div>
+            </div>
+            <div id="pca" class="droppable">
+                <div class="alinha-imp">
+                    <div style="font-family: cursive ; font-size: 25px;"" >Pca</div>
+                </div>
+            </div>
+            <div id="ativo" class="droppable">
+                <div class="alinha-imp">
+                    <div style="font-family: cursive ; font-size: 25px;"" >Ativo</div>
+                </div>
+            </div>
+            <div id="lost" class="droppable">
+                <div class="alinha-imp">
+                    <div style="font-family: cursive; font-size: 25px;" >Lost</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>   
+<div class="modal-cadastro">
+    <div class="cad-enviar">
+        <h2 id="tag-cadastro">Cadastro</h2>
+        <button id="bt-inicial">Tela Inicial</button>
+        <button id="bt-envia" type="button">Enviar</button>
+    </div>
+    <form id="cadastro-form">
+        <input id="id" type="text" placeholder="ID">
+        <input id="parceiro" type="text" placeholder="Parceiro">
+        <select id="op-implantacao">
+            <option value="" disabled selected hidden>Implantação</option>
+            <option value="nenhum">Nenhum</option>
+            <option style="background-color: rgb(248, 235, 161);" value="mca">MCA</option>
+            <option style="background-color: rgb(189, 184, 255);" value="pca">PCA</option>
+            <option style="background-color: rgb(159, 250, 167);" value="ativo">ATIVO</option>
+            <option style="background-color: rgb(247, 190, 190);" value="lost">LOST</option>
+        </select>
+        <select id="op-conta-pj">
+            <option value="" disabled selected hidden>Conta PJ</option>
+            <option value="nenhum">Nenhum</option>
+            <option style="background-color: rgb(248, 235, 161);" value="mca">MCA</option>
+            <option style="background-color: rgb(189, 184, 255);" value="pca">PCA</option>
+            <option style="background-color: rgb(159, 250, 167);" value="ativo">ATIVO</option>
+            <option style="background-color: rgb(247, 190, 190);" value="lost">LOST</option>
+        </select>
+        <select id="op-grupo">
+            <option value="" disabled selected hidden>Grupo</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+        <select id="op-tuvis">
+            <option value="" disabled selected hidden>Tuvis</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+        <select id="op-finalizado">
+            <option value="" disabled selected hidden>Finalizado</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+        <select id="op-n-licencas">
+            <option value="" disabled selected hidden>Nº Licenças</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+        <select id="op-implantacoes">
+            <option value="" disabled selected hidden>Implantações</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <input id="observacao" type="text" placeholder="Obs">
+    </form>
+</div>
+
+<style>
+
+#cabecalhobt {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px auto;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+
+
+#botoes button {
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    color: #000000; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Cursor do mouse como ponteiro */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transições para transformação e sombra */
+}
+
+/* .button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+} */
+
+.button:hover {
+    background-color: #d32f2f;
+}
+
+
+#botoes button:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+/* Estilos para foco (botão focado, útil para acessibilidade) */
+#botoes button:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6); /* Sombra branca para foco */
+}
+
+#opcoes {
+  height: 30px;
+  width: 70px;
+  font-size: 15px;
+  font-family: cursive;
+  margin-top: 12px;
+  border-radius: 5px;
+  background-color: #207fe6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+#origem {
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 9px;
+}
+
+
+
+#bt:hover {
+    background-color: #45a049;
+}
+#gt {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 26px;
+    color: #F8F8F8;
+}
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+    font-size: 30px;
+  }
+  
+  .kanban {
+    display: flex;
+    justify-content: center;
+    min-height: 400px;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .column {
+    display: flex; /* Novo: Usar flexbox */
+    flex-direction: row; /* Novo: Direção das divs em linha */
+    flex-wrap: wrap; /* Novo: Permitir que as divs quebrem para a próxima linha */
+    align-items: flex-start; /* Novo: Alinhar itens no início */
+    gap: 10px; /* Novo: Espaço entre divs */
+    padding: 10px;
+    background-color: #41FCA0;
+    min-width: 200px;
+    border-radius: 5px;
+}
+
+  
+.item {
+    background-color: white;
+    display: flexbox;
+    padding: 5px;
+    margin: 0px;
+    border-radius: 5px;
+    font-size: 13px;
+    max-height: 150px;
+    width: 48%; /* Alterado: Ajuste para caber duas divs lado a lado */
+    overflow-y: auto;
+    box-sizing: border-box; /* Novo: Incluir padding e border no width */
+    font-family: cursive;
+}
+.itemFinalizado {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    max-height: 150px; /* Definindo um limite de altura para as divs */
+    max-width: 155px;
+    overflow-y: auto; /* Adicionando uma barra de rolagem vertical caso o conteúdo exceda o limite de altura */
+    font-family: cursive;
+}
+
+  
+  .dragging {
+    opacity: 0.5;
+  }
+  .column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 5px; /* Espaço antes da linha separadora */
+    border-bottom: 2px solid #ccc; /* Linha separadora */
+    margin-bottom: 10px; /* Espaço entre a linha e as tarefas */
+}
+
+#limparFinalizados {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #f44336; /* Cor vermelha para a ação de limpeza */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#limparFinalizados:hover {
+    background-color: #d32f2f;
+}
+.column-title {
+    width: 100%; /* Ocupa 100% da largura da coluna */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+    font-size: 16px; /* Tamanho da fonte para destaque */
+    font-weight: bold; /* Deixar o texto em negrito */
+}
+
+
+.editando {
+    font-size: 14px; /* Tamanho menor da fonte */
+    width: 100%; /* Ajustar para ocupar toda a largura da div */
+    box-sizing: border-box; /* Para incluir padding e border no width */
+    border: 1px solid #ccc; /* Borda sutil para o campo de entrada */
+    padding: 5px; /* Espaçamento interno para melhor legibilidade */
+  }
+  .item {
+    font-size: 16px; /* Tamanho padrão da fonte para tarefas */
+    cursor: pointer; /* Indica que o item é clicável */
+    padding: 10px; /* Espaçamento interno para tarefas */
+    margin: 5px 0; /* Espaçamento externo entre tarefas */
+}
+
+
+
+#menu {
+  display: none;
+}
+
+
+
+#opcoesDiv {
+    display: none;
+    height: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#mudarCorContainer,#mudarCorColunas,#mudarCorFundo {
+    border-radius: 6px;
+    padding: 2px;
+    background-color: #cccaca;
+    font-size: 15px;
+
+}
+
+#fecharOpcoes {
+  margin-left: 9px;
+  width: 30px;
+  height: 35px;
+  background-color: #f36b62; /* Cor vermelha para a ação de limpeza */
+}
+
+/* cores da versionne 6A337C  LILAZ DA VERSIONNE  /  41FCA0  VERDE VERSIONNE*/
+
+
+#data {
+    color: #000000;
+}
+
+#bt-tarefas, #bt-carteira {
+    background: linear-gradient(to right, rgb(137, 130, 233),
+     rgb(219, 185, 206), rgb(156, 137, 224), rgb(106, 106, 201));
+    height: 68px;
+    width: 407px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+#bt-tarefas {
+    background: linear-gradient(to right, rgb(43, 235, 43), rgb(197, 197, 177));
+  }
+  
+  #bt-tarefas.clicked {
+    background: linear-gradient(to right, rgb(    233, 211, 211), rgb(138, 138, 250));
+  }
+  
+  #bt-carteira {
+    background: linear-gradient(to right, purple, pink);
+  }
+  
+  #bt-carteira.clicked {
+    background: linear-gradient(to right, rgb(235, 202, 143), cyan);
+  }
+
+#menu {
+    display: flex;
+    justify-content: center;
+}
+
+#colnormal,#colfinalizado {
+    height: auto;
+    width: 407px;
+}
+
+
+
+
+
+/*cor que a May quer usar no cabeçalho style="background-color: rgb(197, 181, 222);"*/
+  
+
+
+
+
+
+
+                      /* //  GESTÃO DE CARTEIRA */
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Apenas para visualização */
+  }
+  
+  #corpo-gestao-carteira {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  #bt-cadastro,#bt-deletar,#bt-salvar,#bt-importar{
+    height: 20px;
+    width: auto;
+    background-color: #207fe6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: cursive;
+    transition: background-color 0.3s ease;
+  }
+  
+  #bt-inicial {
+    height: 20px;
+    margin-top: 29px;
+    margin-left: 9px;
+    background-color: #207fe6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  .grid-item {
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  .grid-container {
+    margin: 0px;
+    justify-content: center;
+  }
+  
+  
+  .modal-inicial {
+    width: 96vw; /* 50% da largura da viewport */
+    height: 77vh; /* 50% da altura da viewport */
+    background-color: rgb(223, 233, 250);
+    padding-top: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre as divs */
+    margin: 0px;
+  }
+  
+  .modal-cadastro {   
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 2; /* garantindo que a modal esteja na frente do overlay */
+      background-color: rgb(223, 233, 250);
+      animation: modal-show 0.6s ease forwards;
+      
+  }
+  
+  #mca,#pca,#ativo,#lost,#nenhum {
+    justify-content: center;
+    display: block;
+    margin: 3px;
+    height: 550px;
+    width: 220px;
+  }
+   
+  .alinha-imp {
+    border: solid #207fe6 1px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center; 
+  
+  }
+  
+  @keyframes modal-show {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+  }
+  
+  #id, #parceiro, #observacao {
+    width: 97px;
+    height: 23px;
+    margin: 3px;
+    font-size: 16px;
+  }
+  
+  #op-implantacao, #op-conta-pj, #op-grupo, #op-tuvis, #op-finalizado, #op-n-licencas, #op-implantacoes {
+    width: 105px;
+    height: 30px;
+    margin: 3px;
+    font-size: 16px;
+  }
+  .inline-elements {
+    
+    gap: 5px;
+  }
+  
+  .hidden-content {
+    display: none;
+  }
+  
+  
+  .cad-enviar {
+    display: flex;
+  }
+  
+  #tag-cadastro {
+    font-family: cursive
+  }
+  
+  #bt-envia {
+    height: 20px;
+    margin-top: 29px;
+    margin-left: 9px;
+    background-color: #207fe6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .draggable-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 1px;
+    border-radius: 5px;
+    padding: 4px;
+    width: 200px; /* Adjust this value as needed */
+    font-family: cursive;
+    overflow: auto;
+    background-color: rgb(247, 247, 247);
+  }
+  
+  .delete-checkbox {
+    position: relative;
+    margin-left: auto;
+    margin-right: 4px;
+  }
+  
+  .hidden-content {
+    min-height: 20px;
+    height: auto;
+    display: none;
+    overflow: auto;
+  }
+  
+
+
+
+
+</style>
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const inputTarefa = document.getElementById('origem');
+  const botoes = document.querySelectorAll('#botoes button');
+  const btnLimpar = document.getElementById('limparFinalizados');
+  document.getElementById('corpo-gestao-carteira').style.display = 'none';
+
+  
+
+  inputTarefa.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && inputTarefa.value.trim() !== '') {
+      const coluna = document.getElementById('colnormal');
+      const novaTarefa = document.createElement('div');
+      novaTarefa.className = 'item';
+      novaTarefa.draggable = true;
+      novaTarefa.textContent = inputTarefa.value; 
+
+      const firstItem = coluna.querySelector('.column-title').nextSibling;
+      coluna.insertBefore(novaTarefa, firstItem); 
+
+      inputTarefa.value = '';
+
+      salvarTarefas(); // Chamada para salvar as tarefas no localStorage
+    }
+  });
+
+function criarNovaTarefa(coluna, texto) {
+  const novaTarefa = document.createElement('div');
+  novaTarefa.className = 'item';
+  novaTarefa.draggable = true;
+  novaTarefa.textContent = texto;
+  
+  novaTarefa.addEventListener('click', function() {
+      if (!novaTarefa.contains(document.querySelector('input.editando'))) {
+          editarTarefa(novaTarefa);
+      }
+  });
+
+  const firstItem = coluna.querySelector('.column-title').nextSibling;
+  coluna.insertBefore(novaTarefa, firstItem);
+}
+
+function editarTarefa(tarefaDiv) {
+  const inputEdit = document.createElement('input');
+  inputEdit.type = 'text';
+  inputEdit.className = 'editando';
+  inputEdit.style.fontSize = '20px'; // Aplica um tamanho menor de fonte diretamente
+  inputEdit.value = tarefaDiv.textContent;
+
+  tarefaDiv.innerHTML = '';
+  tarefaDiv.appendChild(inputEdit);
+  inputEdit.focus();
+
+  inputEdit.addEventListener('blur', function() {
+      finalizarEdicao(tarefaDiv, inputEdit.value);
+  });
+
+  inputEdit.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+          finalizarEdicao(tarefaDiv, inputEdit.value);
+      }
+  });
+}
+
+function finalizarEdicao(tarefaDiv, novoTexto) {
+  tarefaDiv.textContent = novoTexto;
+  salvarTarefas();
+}
+
+
+function carregarTarefas() {
+  const tarefasSalvas = localStorage.getItem('tarefas');
+  if (tarefasSalvas) {
+      const tarefas = JSON.parse(tarefasSalvas);
+      tarefas.forEach(tarefa => {
+          if (tarefa.classe === 'item') {
+              const coluna = document.getElementById(tarefa.coluna);
+              criarNovaTarefa(coluna, tarefa.texto);
+          }
+      });
+  }
+}
+
+
+
+  // Limpar tarefas finalizadas
+  btnLimpar.addEventListener('click', function() {
+      const colunaFinalizado = document.getElementById('colfinalizado');
+      const tarefas = colunaFinalizado.querySelectorAll('.itemFinalizado'); // Seleciona todas as divs para apagar
+      tarefas.forEach(tarefa => tarefa.remove());
+      atualizarLocalStorageAposLimpar('colfinalizado'); // Atualiza o localStorage
+  });
+
+  carregarTarefas(); // Carrega tarefas ao iniciar a página
+});
+
+function salvarTarefas() {
+  const colunas = document.querySelectorAll('.column');
+  let tarefas = [];
+  colunas.forEach(coluna => {
+    const itens = coluna.querySelectorAll('.item, .itemFinalizado');
+    itens.forEach(item => {
+      tarefas.push({ texto: item.textContent, coluna: coluna.id, classe: item.className });
+    });
+  });
+  localStorage.setItem('tarefas', JSON.stringify(tarefas));
+}
+
+function carregarTarefas() {
+  const tarefasSalvas = localStorage.getItem('tarefas');
+  if (tarefasSalvas) {
+    const tarefas = JSON.parse(tarefasSalvas);
+    tarefas.forEach(tarefa => {
+      if (tarefa.classe === 'item') {
+        const coluna = document.getElementById(tarefa.coluna);
+        const novaTarefa = document.createElement('div');
+        novaTarefa.className = tarefa.classe;
+        novaTarefa.draggable = true;
+        novaTarefa.textContent = tarefa.texto;
+
+        const firstItem = coluna.querySelector('.column-title').nextSibling;
+        coluna.insertBefore(novaTarefa, firstItem);
+      }
+    });
+  }
+}
+
+function atualizarLocalStorageAposLimpar(idColuna) {
+  const tarefasAtualizadas = carregarTarefasDoLocalStorage().filter(tarefa => tarefa.coluna !== idColuna);
+  localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas));
+}
+
+function carregarTarefasDoLocalStorage() {
+  const tarefasJson = localStorage.getItem('tarefas');
+  return tarefasJson ? JSON.parse(tarefasJson) : [];
+}
+
+const columns = document.querySelectorAll(".column");
+
+document.addEventListener("dragstart", (e) => {
+  if (e.target.className.includes("item")) {
+    e.target.classList.add("dragging");
+  }
+});
+
+document.addEventListener("dragend", (e) => {
+  e.target.classList.remove("dragging");
+  if (e.target.parentElement.id === 'colfinalizado') {
+    e.target.className = 'itemFinalizado';
+  } else {
+    e.target.className = 'item';
+  }
+  salvarTarefas();
+});
+
+columns.forEach(column => {
+  column.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const dragging = document.querySelector(".dragging");
+    const afterElement = getNewPosition(column, e.clientY);
+    if (afterElement == null) {
+      column.appendChild(dragging);
+    } else {
+      column.insertBefore(dragging, afterElement);
+    }
+  });
+});
+
+function getNewPosition(column, posY) {
+  const draggableElements = [...column.querySelectorAll(".item:not(.dragging), .itemFinalizado:not(.dragging)")];
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = posY - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const botaoOpcoes = document.getElementById('opcoes');
+  const opcoesDiv = document.getElementById('opcoesDiv');
+  const seletorCor = document.getElementById('seletorCor');
+  const botaoMudarCorColunas = document.getElementById('mudarCorColunas');
+  const botaoMudarCorFundo = document.getElementById('mudarCorFundo');
+
+  botaoOpcoes.addEventListener('click', function() {
+      opcoesDiv.style.display = (opcoesDiv.style.display === 'none') ? 'block' : 'none';
+  });
+
+  
+
+  botaoMudarCorColunas.addEventListener('click', function() {
+      seletorCor.onchange = function() {
+          document.querySelectorAll('.column').forEach(coluna => {
+              coluna.style.backgroundColor = seletorCor.value;
+          });
+          localStorage.setItem('corColunas', seletorCor.value);
+      };
+      seletorCor.click();
+  });
+
+  botaoMudarCorFundo.addEventListener('click', function() {
+      seletorCor.onchange = function() {
+          document.body.style.backgroundColor = seletorCor.value;
+          localStorage.setItem('corDeFundo', seletorCor.value);
+      };
+      seletorCor.click();
+  });
+
+  carregarCores();
+});
+
+function carregarCores() {
+  const corContainer = localStorage.getItem('corContainer');
+  if (corContainer) {
+      document.getElementById('container').style.backgroundColor = corContainer;
+  }
+
+  const corColunas = localStorage.getItem('corColunas');
+  if (corColunas) {
+      document.querySelectorAll('.column').forEach(coluna => {
+          coluna.style.backgroundColor = corColunas;
+      });
+  }
+
+  const corFundo = localStorage.getItem('corDeFundo');
+  if (corFundo) {
+      document.body.style.backgroundColor = corFundo;
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const botaoOpcoes = document.getElementById('opcoes');
+  const opcoesDiv = document.getElementById('opcoesDiv');
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const fecharOpcoes = document.getElementById('fecharOpcoes');
+
+  // Abre o modal
+  botaoOpcoes.addEventListener('click', function() {
+      opcoesDiv.style.display = 'block';
+  });
+
+  // Fecha o modal
+  fecharOpcoes.addEventListener('click', function() {
+      opcoesDiv.style.display = 'none';
+      modalOverlay.style.visibility = 'hidden';
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btTarefas = document.getElementById('bt-tarefas');
+  const btCarteira = document.getElementById('bt-carteira');
+  const bttfopcoes = document.getElementById('bt-tf-opcoes');
+
+  btTarefas.addEventListener('click', () => {
+    btTarefas.classList.toggle('clicked');
+    document.getElementById('corpo-gestao-carteira').style.display = 'none';
+    document.getElementById('corpo-tarefas').style.display = 'block';
+    document.getElementById('menu').style.display = 'flex';
+  });
+
+  btCarteira.addEventListener('click', () => {
+    btCarteira.classList.toggle('clicked');
+    document.getElementById('corpo-tarefas').style.display = 'none';
+    document.getElementById('corpo-gestao-carteira').style.display = 'flex';
+
+  });
+
+  bttfopcoes.addEventListener('click', () => {
+    bttfopcoes.classList.toggle('clicked');
+    document.getElementById('menu').style.display = 'none';
+    document.querySelector('modal-Overlay').style.display = 'flex';
+
+  });
+
+});
+
+
+//          FUNÇÕES DA GESTÃO DE CARTEIRAS
+
+document.addEventListener("DOMContentLoaded", function () {
+  var btInicial = document.getElementById("bt-inicial");
+  var btCadastro = document.getElementById("bt-cadastro");
+  var btDeletar = document.getElementById("bt-deletar");
+  var btSalvar = document.getElementById("bt-salvar");
+  var btImportar = document.getElementById("bt-importar");
+
+  // Functions to save and load from local storage
+  function saveToLocalStorage() {
+      var state = {
+          nenhum: document.getElementById('nenhum').innerHTML,
+          mca: document.getElementById('mca').innerHTML,
+          pca: document.getElementById('pca').innerHTML,
+          ativo: document.getElementById('ativo').innerHTML,
+          lost: document.getElementById('lost').innerHTML
+      };
+      localStorage.setItem('state', JSON.stringify(state));
+  }
+
+  function loadFromLocalStorage() {
+      var state = JSON.parse(localStorage.getItem('state'));
+      if (state) {
+          document.getElementById('nenhum').innerHTML = state.nenhum;
+          document.getElementById('mca').innerHTML = state.mca;
+          document.getElementById('pca').innerHTML = state.pca;
+          document.getElementById('ativo').innerHTML = state.ativo;
+          document.getElementById('lost').innerHTML = state.lost;
+      }
+  }
+
+  function addHoverEffect(div) {
+      var hiddenContent = div.querySelector('.hidden-content');
+      div.addEventListener('mouseenter', function () {
+          hiddenContent.style.display = 'grid';
+      });
+
+      div.addEventListener('mouseleave', function () {
+          hiddenContent.style.display = 'none';
+      });
+  }
+
+  function reinitializeDragAndDrop() {
+      var draggables = document.querySelectorAll('.modal-inicial > div > div');
+      draggables.forEach(function (draggable) {
+          draggable.setAttribute('draggable', true);
+          draggable.addEventListener('dragstart', drag);
+          addHoverEffect(draggable);  // Add hover effect
+      });
+
+      var droppables = document.querySelectorAll('.droppable');
+      droppables.forEach(function (droppable) {
+          droppable.addEventListener('dragover', allowDrop);
+          droppable.addEventListener('drop', drop);
+      });
+  }
+
+  function allowDrop(ev) {
+      ev.preventDefault();
+  }
+
+  function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      var element = document.getElementById(data);
+      var target = ev.target.closest('.droppable');
+      if (target && target !== element) {
+          target.insertBefore(element, ev.target);
+          saveToLocalStorage();
+      }
+  }
+
+  /* ABRE A TELA DE CADASTRO */
+  btInicial.addEventListener("click", function () {
+      document.querySelector(".modal-cadastro").style.display = "none";
+      document.getElementById('cabecalhobt').style.display = 'flex';
+      document.getElementById("corpo-gestao-carteira").style.display = "flex";
+  });
+
+  /* ABRE A TELA DE CADASTRO */
+  btCadastro.addEventListener("click", function () {
+      document.getElementById("corpo-gestao-carteira").style.display = "none";
+      document.getElementById('cabecalhobt').style.display = 'none';
+      document.querySelector(".modal-cadastro").style.display = "block";
+  });
+//CRIANDO NOVA DIV
+  document.getElementById('bt-envia').addEventListener('click', function () {
+      var codigo = document.getElementById('id').value;
+      var parceiro = document.getElementById('parceiro').value;
+      var implantacao = document.getElementById('op-implantacao').value;
+      var contaPJ = document.getElementById('op-conta-pj').value;
+      var grupo = document.getElementById('op-grupo').value;
+      var tuvis = document.getElementById('op-tuvis').value;
+      var finalizado = document.getElementById('op-finalizado').value;
+      var numeroDeLicencas = document.getElementById('op-n-licencas').value;
+      var implantacoes = document.getElementById('op-implantacoes').value;
+      var observacao = document.getElementById('observacao').value;
+
+      var divDados = document.createElement('div');
+      divDados.classList.add(codigo);
+      divDados.classList.add('draggable-item'); // Add this line to apply CSS class
+      divDados.draggable = true;
+      divDados.id = codigo;
+
+      const cores = {
+          mca: "rgb(248, 235, 161)",
+          pca: "rgb(189, 184, 255)",
+          ativo: "rgb(159, 250, 167)",
+          lost: "rgb(247, 190, 190)",
+          nenhum: "rgb(255, 255, 255)"
+      };
+
+      if (cores.hasOwnProperty(implantacao)) {
+          divDados.style.backgroundColor = cores[implantacao];
+      }
+
+      var checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.classList.add('delete-checkbox'); // Add this line to apply CSS class
+      divDados.appendChild(checkbox);
+
+      var divInline = document.createElement('div');
+      divInline.classList.add('inline-elements');
+
+      var idElement = document.createElement('p');
+      idElement.textContent = `ID: ${codigo}`;
+      idElement.style.fontSize = "16px";
+
+      var parceiroElement = document.createElement('p');
+      parceiroElement.textContent = `Parceiro: ${parceiro}`;
+      parceiroElement.style.margin = "0"; // Remove margin from parceiroElement
+      parceiroElement.style.marginTop = "0px"; // Add a small margin-top to parceiroElement if needed
+      parceiroElement.style.fontSize = "16px";
+
+      divInline.appendChild(idElement);
+      divInline.appendChild(parceiroElement);
+      divDados.appendChild(divInline);
+
+      var hiddenContent = document.createElement('div');
+      hiddenContent.classList.add('hidden-content');
+      hiddenContent.innerHTML = `
+          <div style="font-size: 16px;">Implantação: ${implantacao}</div>
+          <div style="font-size: 16px;">Conta PJ: ${contaPJ}</div>
+          <div style="font-size: 16px;">Grupo: ${grupo}</div>
+          <div style="font-size: 16px;">Tuvis: ${tuvis}</div>
+          <div style="font-size: 16px;">Finalizado: ${finalizado}</div>
+          <div style="font-size: 16px;">Nº Licenças: ${numeroDeLicencas}</div>
+          <div style="font-size: 16px;">Implantações: ${implantacoes}</div>
+          <div style="font-size: 16px;">Obs: ${observacao}</div>
+
+      `;
+
+      divDados.appendChild(hiddenContent);
+
+      addHoverEffect(divDados);
+
+      if (implantacao === "mca") {
+          var divModal = document.getElementById('mca');
+          divModal.appendChild(divDados);
+      }
+
+      if (implantacao === "pca") {
+          var divModal = document.getElementById('pca');
+          divModal.appendChild(divDados);
+      }
+
+      if (implantacao === "ativo") {
+          var divModal = document.getElementById('ativo');
+          divModal.appendChild(divDados);
+      }
+
+      if (implantacao === "lost") {
+          var divModal = document.getElementById('lost');
+          divModal.appendChild(divDados);
+      }
+
+      if (implantacao === "nenhum") {
+          var divModal = document.getElementById('nenhum');
+          divModal.appendChild(divDados);
+      }
+
+      document.getElementById('id').value = "";
+      document.getElementById('parceiro').value = "";
+      document.getElementById('op-implantacao').value = "";
+      document.getElementById('op-conta-pj').value = "";
+      document.getElementById('op-grupo').value = "";
+      document.getElementById('op-tuvis').value = "";
+      document.getElementById('op-finalizado').value = "";
+      document.getElementById('op-n-licencas').value = "";
+      document.getElementById('op-implantacoes').value = "";
+      document.getElementById('observacao').value = "";
+
+      document.querySelector(".modal-cadastro").style.display = "none";      
+      document.getElementById('cabecalhobt').style.display = 'flex';
+      document.getElementById("corpo-gestao-carteira").style.display = "flex";
+
+      saveToLocalStorage();
+  });
+
+  btDeletar.addEventListener('click', function () {
+      var checkboxes = document.querySelectorAll('.modal-inicial input[type="checkbox"]:checked');
+      checkboxes.forEach(function (checkbox) {
+          var div = checkbox.parentNode;
+          div.parentNode.removeChild(div);
+          saveToLocalStorage();
+      });
+  });
+
+  btSalvar.addEventListener('click', function () {
+      var state = JSON.parse(localStorage.getItem('state'));
+      var blob = new Blob([JSON.stringify(state)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'state.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+  });
+
+  btImportar.addEventListener('click', function () {
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.addEventListener('change', function () {
+          var file = input.files[0];
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              var state = JSON.parse(e.target.result);
+              localStorage.setItem('state', JSON.stringify(state));
+              loadFromLocalStorage();
+              reinitializeDragAndDrop(); // Reinitialize drag and drop
+          };
+          reader.readAsText(file);
+      });
+      input.click();
+  });
+
+  document.getElementById('deletartudo').addEventListener('click', function () {
+      localStorage.clear();
+      document.getElementById('nenhum').innerHTML = '';
+      document.getElementById('mca').innerHTML = '';
+      document.getElementById('pca').innerHTML = '';
+      document.getElementById('ativo').innerHTML = '';
+      document.getElementById('lost').innerHTML = '';
+      alert('Tudo deletado!');
+  });
+
+  loadFromLocalStorage();
+  reinitializeDragAndDrop();
+});
+
+</script>
+    
+</body>
+
+</html>
